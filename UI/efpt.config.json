@@ -1,0 +1,46 @@
+﻿{
+  "ContextClassName": "SoftwareFirmContext",
+  "ContextNamespace": null,
+  "DefaultDacpacSchema": null,
+  "DoNotCombineNamespace": false,
+  "IdReplace": false,
+  "IncludeConnectionString": true,
+  "ModelNamespace": null,
+  "OutputContextPath": "Models",
+  "OutputPath": "Models",
+  "ProjectRootNamespace": "UI",
+  "SelectedHandlebarsLanguage": 0,
+  "SelectedToBeGenerated": 0,
+  "Tables": [
+    {
+      "HasPrimaryKey": true,
+      "Name": "[dbo].[DataBase]"
+    },
+    {
+      "HasPrimaryKey": true,
+      "Name": "[dbo].[OperatingSystem]"
+    },
+    {
+      "HasPrimaryKey": true,
+      "Name": "[dbo].[Server]"
+    },
+    {
+      "HasPrimaryKey": true,
+      "Name": "[dbo].[Software]"
+    },
+    {
+      "HasPrimaryKey": true,
+      "Name": "[dbo].[SoftwareDataBase]"
+    },
+    {
+      "HasPrimaryKey": true,
+      "Name": "[dbo].[User]"
+    }
+  ],
+  "UseDatabaseNames": false,
+  "UseFluentApiOnly": true,
+  "UseHandleBars": false,
+  "UseInflector": true,
+  "UseLegacyPluralizer": false,
+  "UseSpatial": false
+}
