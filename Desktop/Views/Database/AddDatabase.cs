@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 using UI.Models;
 
-namespace UI.Views.Database
+namespace Desktop.Views.Database
 {
   public partial class AddDatabase : Form
   {
@@ -23,8 +23,8 @@ namespace UI.Views.Database
 
     private async void SaveDatabaseBtn_Click(object sender, EventArgs e)
     {
-      string databaseName = nameTextBox.Text;
-      var server = ( (ObjectView<Models.Server>)serverBindingSource.Current ).Object;
+      var databaseName = nameTextBox.Text;
+      UI.Models.Server server = ( (ObjectView<UI.Models.Server>)serverBindingSource.Current ).Object;
 
       if(databaseName.IsNullOrEmpty())
       {
@@ -42,7 +42,9 @@ namespace UI.Views.Database
       Hide();
     }
 
-    private async void AddDatabase_Load(object sender, EventArgs e) =>
-        serverBindingSource.DataSource = new BindingListView<Models.Server>(list: await _context.Servers.ToListAsync());
+    private async void AddDatabase_Load(object sender, EventArgs e)
+    {
+      serverBindingSource.DataSource = new BindingListView<UI.Models.Server>(list: await _context.Servers.ToListAsync());
+    }
   }
 }

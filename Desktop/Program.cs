@@ -1,10 +1,10 @@
 ﻿using System;
 
-using UI.Views;
+using Desktop.Views;
 
 using static System.Windows.Forms.Application;
 
-namespace UI
+namespace Desktop
 {
   public static class Program
   {

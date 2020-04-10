@@ -9,9 +9,12 @@ using Microsoft.EntityFrameworkCore;
 
 using UI.Models;
 
-using static UI.Extentions.Navigator;
+using static System.Windows.Forms.MessageBoxButtons;
+using static System.Windows.Forms.MessageBoxIcon;
 
-namespace UI.Views.Database
+using static Desktop.Extentions.Navigator;
+
+namespace Desktop.Views.Database
 {
   /// <summary>
   ///     !TODO:Пункт курсового: одной БД могут пользоваться несколько программ
@@ -26,22 +29,47 @@ namespace UI.Views.Database
       _context = new SoftwareFirmContext();
     }
 
-    private async Task Binding() => dataBaseBindingSource.DataSource = new BindingListView<DataBase>(list: await _context.Databases.ToListAsync());
+    private async Task Binding() => dataBaseBindingSource.DataSource =
+                                    new BindingListView<DataBase>(list: await _context.Databases.ToListAsync());
 
-    private async void dataBaseBindingSource_PositionChanged(object sender, EventArgs e)
+    private void dataBaseBindingSource_PositionChanged(object sender, EventArgs e)
     {
-      var current = ( (ObjectView<DataBase>)dataBaseBindingSource.Current ).Object;
+      DataBase current = ( (ObjectView<DataBase>)dataBaseBindingSource.Current ).Object;
+
+      var q = _context.Softwares.Join(inner: _context.SoftwareDatabases, outerKeySelector: data => data.Id,
+                                      innerKeySelector: softwareDatabase => softwareDatabase.IdSoftware,
+                                      resultSelector: (data, dataBaseSoftware) => new
+                                      {
+                                        data,
+                                        dataBaseSoftware
+                                      })
+                      .Where(predicate: t => t.dataBaseSoftware.IdDataBase == current.Id)
+                      .Select(selector: t => t.data).ToList();
+
+      var bindingListView = new BindingListView<UI.Models.Software>(list: q);
+
+      // softwareBindingSource.DataSource = bindingListView;
+      // dataGridView1.Refresh();
+      // _context.Softwares.Include(it => it.SoftwareDatabases).;
       /*var query = from software in _context.Softwares
-   join sdb in _context.SoftwareDatabases on software.Id equals sdb.IdSoftware
-   where sdb.IdDataBase == current.Id
-   select software;*/
+ join sdb in _context.SoftwareDatabases on software.Id equals sdb.IdSoftware
+ where sdb.IdDataBase == current.Id
+ select software;*/
+      // var query = from software in _context.Softwares
+      // join sdb in _context.SoftwareDatabases on software.Id equals sdb
+      // .IdSoftware
+      // where sdb.IdDataBase == current.Id
+      // select software;
 
-      IQueryable<Models.Software> query = from software in _context.Softwares
-                                          join sdb in _context.SoftwareDatabases on software.Id equals sdb.IdSoftware
-                                          where sdb.IdDataBase == current.Id
-                                          select software;
-
-      softwareBindingSource.DataSource = new BindingListView<Models.Software>(list: await query.ToListAsync());
+      // var softwares = query.ToList();
+      // if (softwares.Any())
+      // {
+      // softwareBindingSource.DataSource   = new BindingListView<UI.Models.Software>(list: softwares);
+      // RemoveSoftwareFromDatabase.Enabled = true;
+      // } else
+      // {
+      // RemoveSoftwareFromDatabase.Enabled = false;
+      // }
     }
 
     private async void DatabaseForm_Load(object sender, EventArgs e) => await Binding();
@@ -51,7 +79,7 @@ namespace UI.Views.Database
     private async void AddDatabaseBtn_Click(object sender, EventArgs e)
     {
       var form = new AddDatabase();
-      if(form.DialogResult == DialogResult.OK)
+      if(form.ShowDialog() == DialogResult.OK)
       {
         await Binding();
         dataBaseDataGridView.Refresh();
@@ -60,14 +88,23 @@ namespace UI.Views.Database
 
     private async void RemoveDatabaseBtn_Click(object sender, EventArgs e)
     {
-      if(dataBaseDataGridView.SelectedRows.Count > 0)
+      DataBase current = ( (ObjectView<DataBase>)dataBaseBindingSource.Current ).Object;
+
+      var query = from software in _context.Softwares
+                  join sdb in _context.SoftwareDatabases on software.Id equals sdb.IdSoftware
+                  where sdb.IdDataBase == current.Id
+                  select software;
+
+      if(!query.Any())
       {
-        var id = (int)dataBaseDataGridView.SelectedRows[index: 0].Cells[index: 0].Value;
-        var database = await _context.Databases.FirstOrDefaultAsync(predicate: it => it.Id == id);
-        _context.Databases.Remove(entity: database);
+        _context.Databases.Remove(entity: current);
         await _context.SaveChangesAsync();
         await Binding();
         dataBaseDataGridView.Refresh();
+      } else
+      {
+        MessageBox.Show(text: "Неможливо видалити дану базу данных, так оскільки на неї силаються деякі прогррамні додати",
+                        caption: "Попередження!", buttons: OK, icon: Warning);
       }
     }
   }

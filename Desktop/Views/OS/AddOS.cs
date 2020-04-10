@@ -5,7 +5,7 @@ using UI.Models;
 
 using OperatingSystem = UI.Models.OperatingSystem;
 
-namespace UI.Views.OS
+namespace Desktop.Views.OS
 {
   public partial class AddOS : Form
   {

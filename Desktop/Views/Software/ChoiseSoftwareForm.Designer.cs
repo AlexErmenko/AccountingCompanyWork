@@ -121,7 +121,7 @@
       this.ShowIcon = false;
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-      this.Text = "ChoiseSoftwareForm";
+      this.Text = "Вибір існуючого програмного додатку";
       this.Load += new System.EventHandler(this.ChoiseSoftwareForm_Load);
       ((System.ComponentModel.ISupportInitialize)(this.operatingSystemBindingSource)).EndInit();
       ((System.ComponentModel.ISupportInitialize)(this.softwaresBindingSource)).EndInit();

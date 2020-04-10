@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 using UI.Models;
 
-using static UI.Extentions.Navigator;
+using static Desktop.Extentions.Navigator;
 
-namespace UI.Views.Server
+namespace Desktop.Views.Server
 {
   /// <summary>
   ///     !TODO: на одном сервере может находиться несколь БД
@@ -30,7 +30,8 @@ namespace UI.Views.Server
     private void GoBack_Click(object sender, EventArgs e) => this.Nav(to: new Main());
 
     private async Task Binding() => serverBindingSource.DataSource =
-                                    new BindingListView<Models.Server>(list: await _context.Servers.ToListAsync());
+                                    new BindingListView<UI.Models.Server>(list: await _context
+                                                                                          .Servers.ToListAsync());
 
     private async void RemoveServerBtn_Click(object sender, EventArgs e)
     {

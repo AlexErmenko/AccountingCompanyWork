@@ -11,12 +11,12 @@ using UI.Models;
 
 using static System.Windows.Forms.DialogResult;
 
-using static UI.Extentions.Navigator;
+using static Desktop.Extentions.Navigator;
 
-namespace UI.Views.User
+namespace Desktop.Views.User
 {
   /// <summary>
-  ///
+  /// 
   /// </summary>
   public partial class UsersForm : Form
   {
@@ -83,13 +83,13 @@ namespace UI.Views.User
     }
 
     /// <summary>
-    ///
+    /// 
     /// </summary>
     /// <returns></returns>
     private async Task SetBinding()
     {
       await _context.Users.LoadAsync();
-      var bindingListView = new BindingListView<Models.User>(list: _context.Users.ToList());
+      var bindingListView = new BindingListView<UI.Models.User>(list: _context.Users.ToList());
       userBindingSource.DataSource = bindingListView;
     }
   }

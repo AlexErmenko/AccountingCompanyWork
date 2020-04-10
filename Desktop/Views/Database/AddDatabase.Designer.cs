@@ -1,4 +1,4 @@
-﻿namespace UI.Views.Database
+﻿namespace Desktop.Views.Database
 {
     partial class AddDatabase
     {

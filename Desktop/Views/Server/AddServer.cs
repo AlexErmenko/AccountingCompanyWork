@@ -5,7 +5,7 @@ using Castle.Core.Internal;
 
 using UI.Models;
 
-namespace UI.Views.Server
+namespace Desktop.Views.Server
 {
   public partial class AddServer : Form
   {
@@ -26,7 +26,7 @@ namespace UI.Views.Server
         return;
       }
 
-      _context.Servers.AddAsync(entity: new Models.Server
+      _context.Servers.AddAsync(entity: new UI.Models.Server
       {
         Name = serverName
       });

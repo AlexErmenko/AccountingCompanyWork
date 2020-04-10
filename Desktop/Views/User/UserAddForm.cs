@@ -6,7 +6,7 @@ using UI.Models;
 using static System.String;
 using static System.Windows.Forms.DialogResult;
 
-namespace UI.Views.User
+namespace Desktop.Views.User
 {
   public partial class UserAddForm : Form
   {
@@ -23,14 +23,11 @@ namespace UI.Views.User
       string firstName = firstNameTextBox.Text;
       string middleName = middleNameTextBox.Text;
       string lastName = lastNameTextBox.Text;
-      if(IsNullOrEmpty(value: firstName))
-        firstNameTextBox.Select();
-      if(IsNullOrEmpty(value: middleName))
-        middleNameTextBox.Select();
-      if(IsNullOrEmpty(value: lastName))
-        lastNameTextBox.Select();
+      if(IsNullOrEmpty(value: firstName)) firstNameTextBox.Select();
+      if(IsNullOrEmpty(value: middleName)) middleNameTextBox.Select();
+      if(IsNullOrEmpty(value: lastName)) lastNameTextBox.Select();
 
-      var user = new Models.User
+      var user = new UI.Models.User
       {
         FirstName = firstName,
         MiddleName = middleName,

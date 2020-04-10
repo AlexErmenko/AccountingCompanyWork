@@ -1,20 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using Desktop.Views.Database;
+using Desktop.Views.OS;
+using Desktop.Views.Server;
+using Desktop.Views.Software;
+using Desktop.Views.User;
 
 using Equin.ApplicationFramework;
 
 using Microsoft.EntityFrameworkCore;
 
 using UI.Models;
-using UI.Views.Database;
-using UI.Views.OS;
-using UI.Views.Server;
-using UI.Views.Software;
-using UI.Views.User;
 
-using static UI.Extentions.Navigator;
+using static System.Windows.Forms.Application;
 
-namespace UI.Views
+using static Desktop.Extentions.Navigator;
+
+namespace Desktop.Views
 {
   /// <summary>
   ///     Главное окно
@@ -73,6 +79,7 @@ namespace UI.Views
     {
       var form = new AddOS();
       form.ShowDialog();
+      throw new NotImplementedException();
     }
 
     /// <summary>
@@ -80,7 +87,54 @@ namespace UI.Views
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private async void Main_Load(object sender, EventArgs e) =>
-        userBindingSource.DataSource = new BindingListView<Models.User>(list: await _context.Users.ToListAsync());
+    private async void Main_Load(object sender, EventArgs e) => await Binding();
+
+    private async Task Binding()
+    {
+      var users = await _context.Users.ToListAsync();
+      userBindingSource.DataSource = new BindingListView<UI.Models.User>(list: users);
+      UsersGridView.Refresh();
+      SoftwareGridView.Refresh();
+    }
+
+    /// <summary>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private async void RemoveSoftwareFromUserBtn_Click(object sender, EventArgs e)
+    {
+      var software = (UI.Models.Software)softwaresBindingSource.Current;
+      if(software != null)
+      {
+        software.IdUser = null;
+        _context.Softwares.Update(entity: software);
+        await _context.SaveChangesAsync();
+      }
+      await Binding();
+    }
+
+    private UI.Models.User GetUser() => ( (ObjectView<UI.Models.User>)userBindingSource.Current ).Object;
+
+    /// <summary>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void AddSoftwareForUserBtn_Click(object sender, EventArgs e) => new SoftwareAddForm(this, GetUser().Id).Show();
+
+    /// <summary>
+    /// При выборе пользователя у которого нет приложений блок на кнопку удаления
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void userBindingSource_PositionChanged(object sender, EventArgs e) => RemoveSoftwareFromUserBtn.Enabled = GetUser().Softwares.Any();
+
+    private void Main_FormClosing(object sender, FormClosingEventArgs e) => Exit();
+
+    /// <summary>
+    ///     Открывает форму для выбора существующего приложения для добавления его пользователю
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void SelectSoftwareForUserBtn_Click(object sender, EventArgs e) => new ChoiseSoftwareForm(from: this, id: GetUser().Id).Show();
   }
 }

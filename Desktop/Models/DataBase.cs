@@ -18,9 +18,10 @@ namespace UI.Models
         public string Name { get; set; }
 
         public int? IdServer { get; set; }
+
         [DisplayName("Сервер")]
         public virtual Server IdServerNavigation { get; set; }
-        [Browsable(false)]
+
         public virtual ObservableCollection<SoftwareDataBase> SoftwareDatabases { get; set; }
     }
 }

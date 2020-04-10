@@ -1,4 +1,4 @@
-﻿namespace UI.Views.OS
+﻿namespace Desktop.Views.OS
 {
   partial class AddOS
   {

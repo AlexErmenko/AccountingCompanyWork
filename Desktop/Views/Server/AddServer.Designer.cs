@@ -1,4 +1,4 @@
-﻿namespace UI.Views.Server
+﻿namespace Desktop.Views.Server
 {
     partial class AddServer
     {

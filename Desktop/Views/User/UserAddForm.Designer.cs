@@ -1,4 +1,4 @@
-﻿namespace UI.Views.User
+﻿namespace Desktop.Views.User
 {
 	partial class UserAddForm
 	{

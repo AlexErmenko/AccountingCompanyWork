@@ -1,4 +1,4 @@
-﻿namespace UI.Views
+﻿namespace Desktop.Views
 {
   partial class Start
   {

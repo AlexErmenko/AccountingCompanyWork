@@ -54,7 +54,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>UI.Program</StartupObject>
+    <StartupObject>Desktop.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -83,6 +83,12 @@
     <Compile Include="Views\Database\AddDatabase.Designer.cs">
       <DependentUpon>AddDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Database\ChoiseDatabaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Database\ChoiseDatabaseForm.Designer.cs">
+      <DependentUpon>ChoiseDatabaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\OS\AddOS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,18 @@
     </Compile>
     <Compile Include="Views\Server\ServerForm.Designer.cs">
       <DependentUpon>ServerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Software\ChoiseSoftwareForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Software\ChoiseSoftwareForm.Designer.cs">
+      <DependentUpon>ChoiseSoftwareForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Software\SoftwareAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Software\SoftwareAddForm.Designer.cs">
+      <DependentUpon>SoftwareAddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Software\SoftwareForm.cs">
       <SubType>Form</SubType>
@@ -143,6 +161,9 @@
     <EmbeddedResource Include="Views\Database\AddDatabase.resx">
       <DependentUpon>AddDatabase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Database\ChoiseDatabaseForm.resx">
+      <DependentUpon>ChoiseDatabaseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Database\DatabaseForm.resx">
       <DependentUpon>DatabaseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +178,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Server\ServerForm.resx">
       <DependentUpon>ServerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Software\ChoiseSoftwareForm.resx">
+      <DependentUpon>ChoiseSoftwareForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Software\SoftwareAddForm.resx">
+      <DependentUpon>SoftwareAddForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Software\SoftwareForm.resx">
       <DependentUpon>SoftwareForm.cs</DependentUpon>

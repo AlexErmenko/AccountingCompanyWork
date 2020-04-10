@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
-using static UI.Extentions.Navigator;
+using static Desktop.Extentions.Navigator;
 
-namespace UI.Views
+namespace Desktop.Views
 {
   /// <summary>
   ///     Стартовое окно
