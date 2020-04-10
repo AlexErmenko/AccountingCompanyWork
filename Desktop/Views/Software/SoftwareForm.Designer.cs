@@ -30,6 +30,8 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.AddDatabaseBtn = new System.Windows.Forms.Button();
+			this.RemoveDatabaseBtn = new System.Windows.Forms.Button();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
 			this.GoBack = new System.Windows.Forms.Button();
@@ -57,6 +59,8 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.AddDatabaseBtn);
+			this.groupBox1.Controls.Add(this.RemoveDatabaseBtn);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.GoBack);
@@ -68,6 +72,26 @@
 			this.groupBox1.Size = new System.Drawing.Size(927, 482);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
+
+			// 
+			// AddDatabaseBtn
+			// 
+			this.AddDatabaseBtn.Location = new System.Drawing.Point(552, 40);
+			this.AddDatabaseBtn.Name = "AddDatabaseBtn";
+			this.AddDatabaseBtn.Size = new System.Drawing.Size(152, 32);
+			this.AddDatabaseBtn.TabIndex = 8;
+			this.AddDatabaseBtn.Text = "Додати програму";
+			this.AddDatabaseBtn.UseVisualStyleBackColor = true;
+
+			// 
+			// RemoveDatabaseBtn
+			// 
+			this.RemoveDatabaseBtn.Location = new System.Drawing.Point(768, 40);
+			this.RemoveDatabaseBtn.Name = "RemoveDatabaseBtn";
+			this.RemoveDatabaseBtn.Size = new System.Drawing.Size(152, 32);
+			this.RemoveDatabaseBtn.TabIndex = 9;
+			this.RemoveDatabaseBtn.Text = "Видалити програму";
+			this.RemoveDatabaseBtn.UseVisualStyleBackColor = true;
 
 			// 
 			// label2
@@ -264,6 +288,7 @@
 			this.ResumeLayout(false);
 		}
 
+		private System.Windows.Forms.Button AddDatabaseBtn;
 		private System.Windows.Forms.BindingSource dataBaseBindingSource;
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.DataGridView dataGridView2;
@@ -281,6 +306,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+		private System.Windows.Forms.Button RemoveDatabaseBtn;
 		private System.Windows.Forms.BindingSource softwareBindingSource;
 
 		#endregion

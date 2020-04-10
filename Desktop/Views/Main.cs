@@ -37,31 +37,35 @@ namespace UI.Views
     }
 
     /// <summary>
-    ///
+    ///     Переход на форму для работы с пользователями
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void usersNavigation_Click(object sender, EventArgs e) => this.Nav(to: new UsersForm());
 
     /// <summary>
+    ///     Переход на форму для работы с базами данных
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void databasesNavigation_Click(object sender, EventArgs e) => this.Nav(to: new DatabaseForm());
 
     /// <summary>
+    ///     Переход на форму для работы с серверами
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void serversNavigation_Click(object sender, EventArgs e) => this.Nav(to: new ServerForm());
 
     /// <summary>
+    ///     Переход на форму для работы с программным обеспечением
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void softwareNavigation_Click(object sender, EventArgs e) => this.Nav(to: new SoftwareForm());
 
     /// <summary>
+    ///     Добавление операционной системы
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>

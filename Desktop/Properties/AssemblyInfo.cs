@@ -4,11 +4,11 @@ using System.Runtime.InteropServices; // General Information about an assembly i
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle(title: "UI")]
+[assembly: AssemblyTitle(title: "Desktop")]
 [assembly: AssemblyDescription(description: "")]
 [assembly: AssemblyConfiguration(configuration: "")]
 [assembly: AssemblyCompany(company: "")]
-[assembly: AssemblyProduct(product: "UI")]
+[assembly: AssemblyProduct(product: "Desktop")]
 [assembly: AssemblyCopyright(copyright: "Copyright ©  2020")]
 [assembly: AssemblyTrademark(trademark: "")]
 [assembly: AssemblyCulture(culture: "")]

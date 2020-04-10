@@ -16,6 +16,7 @@ using static UI.Extentions.Navigator;
 namespace UI.Views.User
 {
   /// <summary>
+  ///
   /// </summary>
   public partial class UsersForm : Form
   {
@@ -82,7 +83,7 @@ namespace UI.Views.User
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <returns></returns>
     private async Task SetBinding()
